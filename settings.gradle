@@ -1,0 +1,3 @@
+rootProject.name = 'smart-circuit-breaker'
+include 'core'
+
