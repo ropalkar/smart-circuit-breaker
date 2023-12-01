@@ -2,6 +2,10 @@ plugins {
     id 'java'
 }
 
+// Disabling the jar generation for the root project.
+// To be handled by individual sub-projects.
+jar.enabled = false
+
 subprojects {
     group 'edu.research'
     version '1.0-SNAPSHOT'
@@ -12,6 +16,7 @@ subprojects {
 
     java {
         sourceCompatibility = '17'
+        targetCompatibility = '17'
     }
 }
 
