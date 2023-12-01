@@ -54,8 +54,8 @@ public class CircuitBreakerRetryConfiguration {
      * @return the custom {@code Retry} instance
      */
     public Retry createCustomRetryConfiguration(){
-        logger.info("Config: {}", config);
-        logger.info("Creating the retry config for the Smart-Circuit-Breaker");
+        logger.debug("Config: {}", config);
+        logger.debug("Creating the retry config for the Smart-Circuit-Breaker");
 
         if(retryCounterSuc == null)
             retryCounterSuc = meterRegistry.counter("service.retry_counter.suc");

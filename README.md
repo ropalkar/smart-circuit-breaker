@@ -2,13 +2,15 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A java based implementation of a Circuit Breaker Design Pattern using Bloom Filters, as part of the research paper _Smart Circuit Breakers_.
+A java based implementation of a Circuit Breaker Design Pattern using Bloom Filters for java-grpc inter-service unary requests, as part of the research paper _Smart Circuit Breakers_.
 This implementation is particularly done -
 - only for inter service/application gRPC calls
 - only for gRPC unary calls.
 - without gRPC based deadlines.
 
 It primarily uses the spring boot framework, along with the [grpc-sprint-boot-starter plugin](https://github.com/yidongnan/grpc-spring-boot-starter) for configuration of gRPC clients and servers.
+It leverages the available bloom filter implementation from the [Google Guava](https://guava.dev/releases/20.0/api/docs/com/google/common/hash/BloomFilter.html) library for the Circuit Breaker design.
+
 Version compatibility as follows : 
 
  - Java 17
@@ -17,6 +19,7 @@ Version compatibility as follows :
  - Spring Dependency Mgmt version - `1.1.3`
  - Protocol Buffers Plugin version - `0.9.4`
  - Protocol Buffers version - `1.58.0`
+ - Google Guava - `32.1.2-jre`
 
 <br> 
 
@@ -46,9 +49,11 @@ SmartCircuitBreaker smartCircuitBreaker(){
 }
 ```
 
+_Please Note: The applying application-service may need to additionally include the base package `edu.research.scb` to the component scanning annotations of spring boot framework._
+
 **For example :**
 ```java
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"edu.research.scb"})
 public class AnyApplication {
 
     public static void main(String[] args) {

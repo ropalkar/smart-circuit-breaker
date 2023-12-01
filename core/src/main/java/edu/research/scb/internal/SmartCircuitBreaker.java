@@ -13,7 +13,7 @@ public class SmartCircuitBreaker implements ClientInterceptor {
      * The conditional implementation of the circuit-breaker strategy which is based on the application properties provided.
      * - The property {@code scb-strategy="bloom-filter"} activates the {@code BloomFilterCircuitBreakerStrategy}.
      * This is the default strategy to be used even if the application property is missing.
-     * - The proeprty {@code scb-strategy="count-min-sketch"} activates the {@code CountMinSketchCircuitBreakerStrategy}.
+     * - The property {@code scb-strategy="count-min-sketch"} activates the {@code CountMinSketchCircuitBreakerStrategy}.
      */
     private final CircuitBreakerStrategy circuitBreaker;
 
